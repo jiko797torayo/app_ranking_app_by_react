@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { readCountries } from '../actions'
 import _ from 'lodash'
+import { Link } from 'react-router-dom'
 
 class CountriesIndex extends Component {
   componentDidMount() {
@@ -12,7 +13,11 @@ class CountriesIndex extends Component {
     return _.map(this.props.countries, country => (
       <tr key={country.id}>
         <td>{country.id}</td>
-        <td>{country.name}</td>
+        <td>
+          <Link to="/">
+            {country.name}
+          </Link>
+        </td>
         <td>{country.code}</td>
       </tr>
     ))
