@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 import { readRankings } from '../actions'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn
+} from 'material-ui/Table'
 
 class RankingsIndex extends Component {
   componentDidMount() {
@@ -11,32 +19,32 @@ class RankingsIndex extends Component {
 
   renderRankings() {
     return _.map(this.props.countries, country => (
-      <tr key={country.id}>
-        <td>{country.id}</td>
-        <td>
+      <TableRow key={country.id}>
+        <TableRowColumn>{country.id}</TableRowColumn>
+        <TableRowColumn>
           <Link to="/">
             {country.name}
           </Link>
-        </td>
-        <td>{country.code}</td>
-      </tr>
+        </TableRowColumn>
+        <TableRowColumn>{country.code}</TableRowColumn>
+      </TableRow>
     ))
-  }
+}
 
   render() {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Code</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderColumn>ID</TableHeaderColumn>
+            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Code</TableHeaderColumn>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {this.renderRankings()}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     )
   }
 }
