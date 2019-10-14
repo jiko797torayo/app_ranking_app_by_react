@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const READ_COUNTRIES = 'READ_COUNTRIES'
+export const READ_RANKINGS = 'READ_RANKINGS'
 
 const ROOT_URL = 'http://localhost:3001/api/v1'
 
-export const readCountries = () => async dispatch => {
-  const response = await axios.get(`${ROOT_URL}/countries`)
-  dispatch({ type: READ_COUNTRIES, response })
+export const readRankings = () => async dispatch => {
+  const response = await axios.get(`${ROOT_URL}/rankings`)
+  dispatch({ type: READ_RANKINGS, response })
 }

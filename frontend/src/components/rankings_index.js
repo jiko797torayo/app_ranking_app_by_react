@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { readCountries } from '../actions'
+import { readRankings } from '../actions'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
 
-class CountriesIndex extends Component {
+class RankingsIndex extends Component {
   componentDidMount() {
-    this.props.readCountries()
+    this.props.readRankings()
   }
 
-  renderCountries() {
+  renderRankings() {
+    console.log(this.props)
     return _.map(this.props.countries, country => (
       <tr key={country.id}>
         <td>{country.id}</td>
@@ -34,14 +35,14 @@ class CountriesIndex extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.renderCountries()}
+          {this.renderRankings()}
         </tbody>
       </table>
     )
   }
 }
 
-const mapStateToProps = state => ({ countries: state.countries })
-const mapDispatchToProps = ({ readCountries })
+const mapStateToProps = state => ({ rankings: state.rankings[0], countries: state.rankings[1] })
+const mapDispatchToProps = ({ readRankings })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CountriesIndex)
+export default connect(mapStateToProps, mapDispatchToProps)(RankingsIndex)

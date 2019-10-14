@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux'
-import countries from './countries'
+import rankings from './rankings'
 
-export default combineReducers({ countries })
+export default combineReducers({ rankings })
