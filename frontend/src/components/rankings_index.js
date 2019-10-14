@@ -10,7 +10,6 @@ class RankingsIndex extends Component {
   }
 
   renderRankings() {
-    console.log(this.props)
     return _.map(this.props.countries, country => (
       <tr key={country.id}>
         <td>{country.id}</td>
